@@ -30,7 +30,8 @@ def audit():
     clear_text_widget_and_buttons()
     text_widget.insert(tk.END, "Current stock in warehouse:\n")
     for key, value in items_dict.items():
-        text_widget.insert(tk.END, f"{key} {value}\n")
+        if value > 0:
+            text_widget.insert(tk.END, f"{key} {value}\n")
 
 
 def remove_entry():
