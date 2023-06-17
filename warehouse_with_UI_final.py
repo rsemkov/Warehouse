@@ -35,22 +35,30 @@ def audit():
 
 def remove_entry():
     name = entry1.get()
-    count = int(entry2.get())
-    if count <= 0 or (not name.isalpha()):
+    try:
+        count = int(entry2.get())
+        if count <= 0 or (not name.isalpha()):
+            clear_text_widget_and_buttons()
+            text_widget.insert(tk.END, "Invalid input! You can only enter positive values!")
+        else:
+            remove(name, count)
+    except ValueError:
         clear_text_widget_and_buttons()
-        text_widget.insert(tk.END, "Invalid input! You can only enter positive values!")
-    else:
-        remove(name, count)
+        text_widget.insert(tk.END, "Invalid input! You can only enter valid values!")
 
 
 def load_entry():
     name = entry1.get()
-    count = int(entry2.get())
-    if count <= 0 or (not name.isalpha()):
+    try:
+        count = int(entry2.get())
+        if count <= 0 or (not name.isalpha()):
+            clear_text_widget_and_buttons()
+            text_widget.insert(tk.END, "Invalid input! You can only enter valid values!")
+        else:
+            load(name, count)
+    except ValueError:
         clear_text_widget_and_buttons()
         text_widget.insert(tk.END, "Invalid input! You can only enter valid values!")
-    else:
-        load(name, count)
 
 
 def clear_text_widget_and_buttons():
